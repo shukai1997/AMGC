@@ -180,3 +180,6 @@ class Classifer(nn.Module):
         x = self.sigmoid(x)
         return x, atom_weights
 
+
+
+print('try')
