@@ -1,0 +1,25 @@
+Name,ChEMBL ID,Gene,Possibility,Status
+Lysine-specific demethylase 5B,CHEMBL3774295,KDM5B,0.8768,Predicted
+Serine/threonine-protein kinase Aurora-B,CHEMBL2185,AURKB,0.8589,Predicted
+Cyclin-dependent kinase 2,CHEMBL301,CDK2,0.8535,Predicted
+Serine/threonine-protein kinase Aurora-A,CHEMBL4722,AURKA,0.8,Predicted
+Histone lysine demethylase PHF8,CHEMBL1938212,PHF8,0.7701,Predicted
+Cat eye syndrome critical region protein 2,CHEMBL3108639,CECR2,0.7505,Predicted
+Histone deacetylase 2,CHEMBL1937,HDAC2,0.7277,Predicted
+"AMP-activated protein kinase, alpha-1 subunit",CHEMBL4045,PRKAA1,0.719,Predicted
+Lysine-specific demethylase 5C,CHEMBL2163176,KDM5C,0.7122,Predicted
+Lysine-specific demethylase 4C,CHEMBL6175,KDM4C,0.7104,Predicted
+Lysyl oxidase homolog 2,CHEMBL3714029,LOXL2,0.697,Predicted
+Mitogen-activated protein kinase kinase kinase 7,CHEMBL5776,MAP3K7,0.6955,Predicted
+Bifunctional protein NCOAT,CHEMBL5921,MGEA5,0.6709,Predicted
+Cyclin-dependent kinase 1,CHEMBL308,CDK1,0.6393,Predicted
+Polycomb protein EED,CHEMBL2189117,EED,0.6232,Predicted
+Histone deacetylase 1,CHEMBL325,HDAC1,0.5867,Predicted
+Survival motor neuron protein,CHEMBL1293232,SMN2,0.5812,Predicted
+Histone deacetylase 6,CHEMBL1865,HDAC6,0.5777,Predicted
+Poly [ADP-ribose] polymerase-1,CHEMBL3105,PARP1,0.5771,Predicted
+Histone deacetylase 8,CHEMBL3192,HDAC8,0.5666,Predicted
+Tyrosine-protein kinase JAK2,CHEMBL2971,JAK2,0.5433,Predicted
+Histone deacetylase 11,CHEMBL3310,HDAC11,0.542,Predicted
+Ubiquitin carboxyl-terminal hydrolase 7,CHEMBL2157850,USP7,0.523,Predicted
+Histone deacetylase 5,CHEMBL2563,HDAC5,0.5167,Predicted
