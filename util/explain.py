@@ -93,9 +93,12 @@ if __name__ == "__main__":
     argparser.add_argument('--smile', type=str,
                         default='C[C@H](CN[C@@H](C(=O)NC1=NC=C(C=C1)C1=CN(C)N=C1)C1=CC=CC=C1)C1=CC=C(C=C1)C#N',
                         help='the smile')
+    argparser.add_argument('--pred_result_path', type=str,
+                        default='/home/liuhx/shukai/refer/AMGC/out_dir/explainability',
+                        help='the predition result path')
     args = argparser.parse_args()
     svg = explain(args.smile)
-    with open('/home/liuhx/shukai/refer/AMGC/out_dir/explainability/explain.svg', 'w') as f:
+    with open(os.path.join(args.pred_result_path, 'explain.svg'), 'w') as f:
         f.write(svg)
     display(SVG(svg))
 
