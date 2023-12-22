@@ -11,24 +11,20 @@
 
 ## Overview 
 
-KarmaDock is a deep learning framework that enables ligand docking with fast speed and high accuracy. The framework consists of four main steps: creating Python environments, preprocessing PDBBind data, generating graphs based on protein-ligand complexes, and ligand docking.
+AMGC (adaptive multi-task graph convolutional network with contrastive learning) is a novel GCN-based multi-task model for predicting the inhibition profiles of small molecules against 67 epigenetic targets.
 
 ## Software Requirements
-
-### OS Requirements
-
-The package development version is tested on *Linux: Ubuntu 18.04* operating systems.
 
 ### Python Dependencies
 
 Dependencies for KarmaDock:
 
 ```
-pytorch
-pyg
-rdkit
-mdanalysis
-prody 
+- python 3.8.12
+- DGL 0.6.1 
+- PyTorch 1.12.0 
+- dgllife 0.2.9 
+- RDKIT (recommended version 2021.09.2) 
 ```
 
 ## Installation Guide
@@ -36,24 +32,16 @@ prody
 ### download this repo
 
 ```
-git clone https://github.com/schrojunzhang/KarmaDock.git
+git clone https://github.com/shukai1997/AMGC.git
 ```
 
-### install karmadock_env
+### install amgc_env
 
 you can install the env via yaml file
 
 ```
 cd KarmaDock
-conda env create -f karmadock_env.yaml
-```
-
-or you can download the [conda-packed file](https://pan.baidu.com/s/1_Pzr8ZxnmfgwPkr8iiaO4Q?pwd=kyhc) (code=kyhc), and then unzip it in `${anaconda install dir}/anaconda3/envs`. `${anaconda install dir}` represents the dir where the anaconda is installed. For me, ${anaconda install dir}=/root . 
-
-```
-mkdir ${anaconda install dir}/anaconda3/envs/karmadock 
-tar -xzvf karmadock.tar.gz -C ${anaconda install dir}/anaconda3/envs/karmadock
-conda activate karmadock
+conda env create -f amgc_env.yaml
 ```
 
 ## Demo & Reproduction: ligand docking on PDBBind core set
