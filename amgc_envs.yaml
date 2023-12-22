@@ -1,4 +1,4 @@
-name: epigenetic
+name: amgc_envs
 channels:
   - pytorch
   - dglteam
