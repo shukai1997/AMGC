@@ -17,14 +17,14 @@ AMGC (adaptive multi-task graph convolutional network with contrastive learning)
 
 ### Python Dependencies
 
-Dependencies for KarmaDock:
+Dependencies for AMGC:
 
 ```
 - python 3.8.12
 - DGL 0.6.1 
 - PyTorch 1.12.0 
 - dgllife 0.2.9 
-- RDKIT (recommended version 2021.09.2) 
+- RDKIT (recommended version 2020.09.5) 
 ```
 
 ## Installation Guide
@@ -40,76 +40,54 @@ git clone https://github.com/shukai1997/AMGC.git
 you can install the env via yaml file
 
 ```
-cd KarmaDock
+cd AMGC
 conda env create -f amgc_env.yaml
+conda activate amgc_env
 ```
 
-## Demo & Reproduction: ligand docking on PDBBind core set
+## Demo & Reproduction: 
 
-Assume that the project is at `/root` and therefore the project path is /root/KarmaDock.
+Assume that the project is at `/root` and therefore the project path is /root/AMGC. Please manually adjust the corresponding file path if you want to run it.
 
-### 1. Download PDBBind dataset
+### 1. generate graph files
 
-You can download the PDBBind 2020 core set without preprocessing from the [PDBBind website](http://pdbbind.org.cn/index.php)
-OR you can download [the version](https://zenodo.org/record/7788083/files/pdbbind2020_core_set.zip?download=1) where protein files were prepared by Schrodinger. 
-```
-cd /root/KarmaDock
-weget https://zenodo.org/record/7788083/files/pdbbind2020_core_set.zip?download=1
-unzip -q pdbbind2020_core_set.zip?download=1
-```
-
-### 2. Preprocess PDBBind data
-
-The purpose of this step is to identify residues that are within a 12Å radius of any ligand atom and use them as the pocket of the protein. The pocket file (xxx_pocket_ligH12A.pdb) will also be saved on the `complex_file_dir`.
+The purpose of this step is to save graph files for all molecules in the internal and external datasets, and save their labels as npy files.
 
 ```
-cd /root/KarmaDock/utils 
-python -u pre_processing.py --complex_file_dir ~/your/PDBBindDataset/path
-```
-e.g.,
-```
-cd /root/KarmaDock/utils 
-python -u pre_processing.py --complex_file_dir /root/KarmaDock/pdbbind2020_core_set
+cd /root/AMGC/utils 
+python -u generate_graph.py
 ```
 
-### 3. Generate graphs based on protein-ligand complexes
+### 2. Predict epigenetic inhibition profiles from the smiles
 
-This step will generate graphs for protein-ligand complexes and save them (*.dgl) to `graph_file_dir`.
+This step will generate a csv file which record the prediction result of epigenetic inhibition profiles.
 
 ```
-cd /root/KarmaDock/utils 
-python -u generate_graph.py 
---complex_file_dir ~/your/PDBBindDataset/path 
---graph_file_dir ~/the/directory/for/saving/graph 
---csv_file ~/path/of/csvfile/with/dataset/split
+cd /root/AMGC/utils  
+python -u predict.py 
+--smile ~/your/interested/smile 
+--pred_result_path ~/the/directory/for/saving/prediction/result
 ```
 e.g.,
 ```
 mkdir /root/KarmaDock/test_graph
 cd /root/KarmaDock/utils 
-python -u generate_graph.py --complex_file_dir /root/KarmaDock/pdbbind2020_core_set --graph_file_dir /root/KarmaDock/test_graph --csv_file /root/KarmaDock/pdbbind2020.csv
+python -u predict.py --smile 'CC1=C(C(NC2=CN=C(S(=O)(N)=O)C=C2)=O)C3=C(N=CN(CCN4CCCC4)C3=O)O1' --pred_result_path '/home/liuhx/shukai/refer/AMGC/out_dir/pred_result/test.csv'
 ```
 
-### 4. ligand docking
+### 3. explainability
 
-This step will perform ligand docking (predict binding poses and binding strengthes) based on the graphs. (finished in about 0.5 min)
+The purpose of this step to rank the contribution of different atom pairs in the molecule to the final prediction result.
 
 ```
-cd /root/KarmaDock/utils 
-python -u ligand_docking.py 
---graph_file_dir ~/the/directory/for/saving/graph 
---csv_file ~/path/of/csvfile/with/dataset/split 
---model_file ~/path/of/trained/model/parameters 
---out_dir ~/path/for/recording/BindingPoses&DockingScores 
---docking Ture/False  whether generating binding poses
---scoring Ture/False  whether predict binding affinities
---correct Ture/False  whether correct the predicted binding poses
---batch_size 64 
---random_seed 2023 
+cd /root/AMGC/utils 
+python -u expalin.py 
+--smile ~/your/interested/smile 
+--pred_result_path ~/the/directory/for/saving/explainability/result 
 ```
 e.g.,
 ```
 mkdir /root/KarmaDock/test_result
 cd /root/KarmaDock/utils 
-python -u ligand_docking.py --graph_file_dir /root/KarmaDock/test_graph --csv_file /root/KarmaDock/pdbbind2020.csv --model_file /root/KarmaDock/trained_models/karmadock_docking.pkl --out_dir /root/KarmaDock/test_result --docking True --scoring True --correct True --batch_size 64 --random_seed 2023
+python -u ligand_docking.py --smile 'C[C@H](CN[C@@H](C(=O)NC1=NC=C(C=C1)C1=CN(C)N=C1)C1=CC=CC=C1)C1=CC=C(C=C1)C#N' --pred_result_path '/home/liuhx/shukai/refer/AMGC/out_dir/explainability'
 ```
