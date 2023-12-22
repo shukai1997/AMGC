@@ -1,6 +1,6 @@
 # AMGC: a multiple task graph neutral network for epigenetic targets profiling 
 
-![](https://https://github.com/shukai1997/AMGC/blob/main/Figure1.png)
+![](https://github.com/shukai1997/AMGC/blob/main/Figure1.png)
 
 ## Contents
 
