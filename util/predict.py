@@ -95,10 +95,10 @@ def computer_score(smile):
 def generate_dataframe(smile, score):
     score = score
     data_columns = pd.read_csv(
-        '/home/liuhx/shukai/refer/AMGC/train_models/columns.csv')
+        '/home/liuhx/shukai/refer/AMGC/refer_files/columns.csv')
     columns = list(data_columns['columns'])
     data1 = pd.read_csv(
-        '/home/liuhx/shukai/refer/AMGC/train_models/target_info.csv')
+        '/home/liuhx/shukai/refer/AMGC/refer_files/target_info.csv')
     data1['ChEMBL ID'] = data1['ChEMBL ID'].astype('category')
     data1['ChEMBL ID'].cat.reorder_categories(columns, inplace=True)
     data1.sort_values('ChEMBL ID', inplace=True)
@@ -113,7 +113,7 @@ def generate_dataframe(smile, score):
     data2 = data2.iloc[:index_num, :]
 
     data_all = pd.read_csv(
-        '/home/liuhx/shukai/refer/AMGC/train_models/multi_task_mywork.csv')
+        '/home/liuhx/shukai/refer/AMGC/refer_files/multi_task_mywork.csv')
     flag = False
     for i in range(data_all.shape[0]):
         if data_all.iloc[:, 0][i] == smile:
