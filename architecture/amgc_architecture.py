@@ -1,3 +1,12 @@
+# -*- coding: utf-8 -*-
+"""
+@Time:Created on 2022/5/14 8:36
+@author: Shukai GU
+@Filename: generate_graph.py
+@Software: Vscode
+"""
+
+
 import torch
 import torch.optim
 import torch.nn as nn
@@ -149,23 +158,4 @@ class Classifer_SelectSuperparameter(nn.Module):
         x = self.fc2(x)
         x = self.sigmoid(x)
         return x , atom_weights
-
-class WeightAndSum(nn.Module):
-    def __init__(self, in_feats):
-        super(WeightAndSum, self).__init__()
-        self.in_feats = in_feats
-        self.atom_weighting = nn.Sequential(
-            nn.Linear(in_feats, 1)
-        )
-
-    def forward(self, g, feats , get_node_weight=True):
-        with g.local_scope():
-            g.ndata['h'] = feats
-            atom_weights = self.atom_weighting(g.ndata['h'])
-            g.ndata['w'] = torch.nn.Sigmoid()(self.atom_weighting(g.ndata['h']))
-            h_g_sum = sum_nodes(g, 'h', 'w')
-        if get_node_weight:
-            return h_g_sum, atom_weights
-        else:
-            return h_g_sum
 
