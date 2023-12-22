@@ -89,5 +89,5 @@ e.g.,
 ```
 mkdir /root/AMGC/test_result
 cd /root/AMGC/utils 
-python -u ligand_docking.py --smile 'C[C@H](CN[C@@H](C(=O)NC1=NC=C(C=C1)C1=CN(C)N=C1)C1=CC=CC=C1)C1=CC=C(C=C1)C#N' --pred_result_path '/home/liuhx/shukai/refer/AMGC/out_dir/explainability'
+python -u explain.py --smile 'C[C@H](CN[C@@H](C(=O)NC1=NC=C(C=C1)C1=CN(C)N=C1)C1=CC=CC=C1)C1=CC=C(C=C1)C#N' --pred_result_path '/home/liuhx/shukai/refer/AMGC/out_dir/explainability'
 ```
