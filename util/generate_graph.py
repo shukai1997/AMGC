@@ -43,7 +43,7 @@ if __name__ == "__main__":
     args = argparser.parse_args()
 
     internal_dataset_csv_file = args.internal_dataset
-    df = pd.read_csv(internal_dataset_csv_file).iloc[:3,:]
+    df = pd.read_csv(internal_dataset_csv_file)
     PandasTools.AddMoleculeColumnToFrame(df, smilesCol='std_smiles')
     atom_featurizer = MyAtomFeaturizer()
     bond_featurizer = CanonicalBondFeaturizer(bond_data_field='feat',self_loop=True)
