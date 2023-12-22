@@ -1,10 +1,9 @@
-
 # -*- coding: utf-8 -*-
 """
 @Time:Created on 2022/5/14 8:36
 @author: Shukai GU
 @Filename: ligand_feature.py
-@Software: Vscore
+@Software: Vscode
 """
 
 
