@@ -245,8 +245,8 @@ def SelectSuperParameters(trial):
     
 if __name__ == "__main__":
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    path_i_ori = '/home/liuhx/shukai/refer/AMGC/dataset/internal_dataset'
-    path_e_ori = '/home/liuhx/shukai/refer/AMGC/dataset/external_dataset'
+    path_i_ori = '/root/AMGC/dataset/internal_dataset'
+    path_e_ori = '/root/AMGC/dataset/external_dataset'
 
     #load internal dataset
     glist, _ = load_graphs(os.path.join(path_i_ori , 'mul_ori_data.bin'))
