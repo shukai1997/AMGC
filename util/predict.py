@@ -84,7 +84,7 @@ def computer_score(smile):
     device = torch.device("cpu" if torch.cuda.is_available() else "cpu")
     bg = bg.to(device)
     atoms_feat = atoms_feat.to(device)
-    model = torch.load('/home/liuhx/shukai/refer/AMGC/train_models/mul_task0.pth',map_location=torch.device('cpu'))
+    model = torch.load('/root/AMGC/train_models/mul_task0.pth',map_location=torch.device('cpu'))
     model1 = model['model_state_dict'].eval().to(device)
     score = model1(bg,atoms_feat)[0]
     score = score.cpu().detach().numpy()
@@ -95,10 +95,10 @@ def computer_score(smile):
 def generate_dataframe(smile, score):
     score = score
     data_columns = pd.read_csv(
-        '/home/liuhx/shukai/refer/AMGC/refer_files/columns.csv')
+        '/root/AMGC/refer_files/columns.csv')
     columns = list(data_columns['columns'])
     data1 = pd.read_csv(
-        '/home/liuhx/shukai/refer/AMGC/refer_files/target_info.csv')
+        '/root/AMGC/refer_files/target_info.csv')
     data1['ChEMBL ID'] = data1['ChEMBL ID'].astype('category')
     data1['ChEMBL ID'].cat.reorder_categories(columns, inplace=True)
     data1.sort_values('ChEMBL ID', inplace=True)
@@ -113,7 +113,7 @@ def generate_dataframe(smile, score):
     data2 = data2.iloc[:index_num, :]
 
     data_all = pd.read_csv(
-        '/home/liuhx/shukai/refer/AMGC/refer_files/multi_task_mywork.csv')
+        '/root/AMGC/refer_files/multi_task_mywork.csv')
     flag = False
     for i in range(data_all.shape[0]):
         if data_all.iloc[:, 0][i] == smile:
@@ -145,7 +145,7 @@ if __name__ == "__main__":
                         default='CC1=C(C(NC2=CN=C(S(=O)(N)=O)C=C2)=O)C3=C(N=CN(CCN4CCCC4)C3=O)O1',
                         help='the smile')
     argparser.add_argument('--pred_result_path', type=str,
-                        default='/home/liuhx/shukai/refer/AMGC/out_dir/pred_result/pred_result.csv',
+                        default='/root/AMGC/out_dir/pred_result/pred_result.csv',
                         help='the predition result path')
 
     args = argparser.parse_args()
