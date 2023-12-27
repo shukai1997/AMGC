@@ -32,13 +32,13 @@ if __name__ == "__main__":
     # change the file path when you run it  
     argparser = argparse.ArgumentParser()
     argparser.add_argument('--internal_dataset', type=str,
-                        default='/home/liuhx/shukai/refer/AMGC/dataset/internal_dataset/multi_task.csv',
+                        default='/root/AMGC/dataset/internal_dataset/multi_task.csv',
                         help='the complex file path')
     argparser.add_argument('--external_dataset', type=str,
-                        default='/home/liuhx/shukai/refer/AMGC/dataset/external_dataset/multi_task.csv',
+                        default='/root/AMGC/dataset/external_dataset/multi_task.csv',
                         help='the graph files path')
     argparser.add_argument('--out_graph_dir', type=str,
-                        default='/home/liuhx/shukai/refer/AMGC/dataset/internal_dataset',
+                        default='/root/AMGC/dataset/internal_dataset',
                         help='the csv file with dataset split')
     args = argparser.parse_args()
 
