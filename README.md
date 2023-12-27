@@ -41,8 +41,8 @@ you can install the env via yaml file
 
 ```
 cd AMGC
-conda env create -f amgc_env.yaml
-conda activate amgc_env
+conda env create -f amgc_envs.yaml
+conda activate amgc_envs
 ```
 
 ## Demo & Reproduction: 
@@ -54,7 +54,7 @@ Assume that the project is at `/root` and therefore the project path is /root/AM
 The purpose of this step is to save graph files for all molecules in the internal and external datasets, and save their labels as npy files.
 
 ```
-cd /root/AMGC/utils 
+cd /root/AMGC/util
 python -u generate_graph.py
 ```
 
@@ -63,7 +63,7 @@ python -u generate_graph.py
 This step will generate a csv file which record the prediction result of epigenetic inhibition profiles.
 
 ```
-cd /root/AMGC/utils  
+cd /root/AMGC/util
 python -u predict.py 
 --smile ~/your/interested/smile 
 --pred_result_path ~/the/directory/for/saving/prediction/result
@@ -80,7 +80,7 @@ python -u predict.py --smile 'CC1=C(C(NC2=CN=C(S(=O)(N)=O)C=C2)=O)C3=C(N=CN(CCN4
 The purpose of this step to rank the contribution of different atom pairs in the molecule to the final prediction result.
 
 ```
-cd /root/AMGC/utils 
+cd /root/AMGC/util 
 python -u expalin.py 
 --smile ~/your/interested/smile 
 --pred_result_path ~/the/directory/for/saving/explainability/result 
@@ -88,6 +88,6 @@ python -u expalin.py
 e.g.,
 ```
 mkdir /root/AMGC/test_result
-cd /root/AMGC/utils 
+cd /root/AMGC/util
 python -u explain.py --smile 'C[C@H](CN[C@@H](C(=O)NC1=NC=C(C=C1)C1=CN(C)N=C1)C1=CC=CC=C1)C1=CC=C(C=C1)C#N' --pred_result_path '/home/liuhx/shukai/refer/AMGC/out_dir/explainability'
 ```
