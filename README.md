@@ -81,7 +81,7 @@ The purpose of this step to rank the contribution of different atom pairs in the
 
 ```
 cd /root/AMGC/util 
-python -u expalin.py 
+python -u explain.py 
 --smile ~/your/interested/smile 
 --pred_result_path ~/the/directory/for/saving/explainability/result 
 ```
