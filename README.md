@@ -47,7 +47,7 @@ conda activate amgc_envs
 
 ## Demo & Reproduction: 
 
-Assume that the project is at `/root` and therefore the project path is /root/AMGC. **Please manually adjust the root path if you want to run the code.**
+Assume that the project is at `/root` and therefore the project path is /root/AMGC. 
 
 ### 1. generate graph files
 
@@ -72,7 +72,7 @@ e.g.,
 ```
 mkdir /root/AMGC/test_graph
 cd /root/AMGC/utils 
-python -u predict.py --smile 'CC1=C(C(NC2=CN=C(S(=O)(N)=O)C=C2)=O)C3=C(N=CN(CCN4CCCC4)C3=O)O1' --pred_result_path '/root/AMGC/out_dir/pred_result/test.csv'
+python -u predict.py --smile 'CC1=C(C(NC2=CN=C(S(=O)(N)=O)C=C2)=O)C3=C(N=CN(CCN4CCCC4)C3=O)O1' --pred_result_path '../AMGC/out_dir/pred_result/test.csv'
 ```
 
 ### 3. explainability
@@ -89,5 +89,5 @@ e.g.,
 ```
 mkdir /root/AMGC/test_result
 cd /root/AMGC/util
-python -u explain.py --smile 'C[C@H](CN[C@@H](C(=O)NC1=NC=C(C=C1)C1=CN(C)N=C1)C1=CC=CC=C1)C1=CC=C(C=C1)C#N' --pred_result_path '/root/AMGC/out_dir/explainability'
+python -u explain.py --smile 'C[C@H](CN[C@@H](C(=O)NC1=NC=C(C=C1)C1=CN(C)N=C1)C1=CC=CC=C1)C1=CC=C(C=C1)C#N' --pred_result_path '../AMGC/out_dir/explainability'
 ```
