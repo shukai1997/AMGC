@@ -303,7 +303,7 @@ def train(net, glist1, glist2, y1, y2, learning_rate, weight_decay, Batch_size, 
     optimizer = torch.optim.Adam(params=net.parameters(), lr=learning_rate, weight_decay=weight_decay)  
     scheduler = ReduceLROnPlateau(optimizer, mode='max', factor=0.5, patience=5) 
     stopper = EarlyStopping(mode='higher', patience=30, tolerance=0.0,
-                            filename='/root/AMGC/train_models/mul_task_record.pth')
+                            filename='../train_models/mul_task_record.pth')
     train_loss_record = []
     valid_loss_record = []
     train_roc_record = []

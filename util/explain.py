@@ -47,7 +47,7 @@ def explain(smiles):
     dataset = data_loader.dataset
     #device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     device = torch.device("cpu" if torch.cuda.is_available() else "cpu")
-    model = torch.load('/root/AMGC/train_models/mul_task0.pth',map_location=torch.device('cpu'))
+    model = torch.load('../train_models/mul_task0.pth',map_location=torch.device('cpu'))
     model1 = model['model_state_dict'].eval().to(device)
     smiles, graph = dataset[0]
     bg = dgl.batch([graph])
@@ -94,7 +94,7 @@ if __name__ == "__main__":
                         default='C[C@H](CN[C@@H](C(=O)NC1=NC=C(C=C1)C1=CN(C)N=C1)C1=CC=CC=C1)C1=CC=C(C=C1)C#N',
                         help='the smile')
     argparser.add_argument('--pred_result_path', type=str,
-                        default='/root/AMGC/out_dir/explainability',
+                        default='../out_dir/explainability',
                         help='the predition result path')
     args = argparser.parse_args()
     svg = explain(args.smile)
